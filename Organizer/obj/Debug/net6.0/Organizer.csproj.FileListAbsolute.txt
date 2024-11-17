@@ -1,0 +1,15 @@
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\bin\Debug\net6.0\Organizer.exe
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\bin\Debug\net6.0\Organizer.deps.json
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\bin\Debug\net6.0\Organizer.runtimeconfig.json
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\bin\Debug\net6.0\Organizer.dll
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\bin\Debug\net6.0\Organizer.pdb
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.csproj.AssemblyReference.cache
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.GeneratedMSBuildEditorConfig.editorconfig
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.AssemblyInfoInputs.cache
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.AssemblyInfo.cs
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.csproj.CoreCompileInputs.cache
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.dll
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\refint\Organizer.dll
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.pdb
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\Organizer.genruntimeconfig.cache
+E:\prj\Kursach\LizinKurs\Organizer\Organizer\obj\Debug\net6.0\ref\Organizer.dll
