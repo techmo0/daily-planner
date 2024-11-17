@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Organizer;
+using System.Runtime.CompilerServices;
 
 namespace EventPlanner.Tests
 {
@@ -15,7 +17,6 @@ namespace EventPlanner.Tests
         [TestInitialize]
         public void Setup()
         {
-            // Удаляем файл перед каждым тестом для чистоты тестирования
             if (File.Exists(TestFilePath))
             {
                 File.Delete(TestFilePath);
@@ -26,7 +27,6 @@ namespace EventPlanner.Tests
         [TestMethod]
         public void AddEvent_ShouldAddEventToList()
         {
-            // Arrange
             var newEvent = new Event
             {
                 Type = "meeting",
@@ -34,19 +34,14 @@ namespace EventPlanner.Tests
                 Duration = 30,
                 Description = "Team meeting"
             };
-
-            // Act
             eventManager.AddEvent(newEvent);
 
-            // Assert
-            eventManager.ViewEvents(); // Просто вызываем метод для отображения событий
-                                       // Здесь вы можете добавить дополнительные проверки на консольный вывод, если это необходимо.
+            eventManager.ViewEvents(); 
         }
 
         [TestMethod]
         public void EditEvent_ShouldUpdateExistingEvent()
         {
-            // Arrange
             var initialEvent = new Event
             {
                 Type = "call",
@@ -64,11 +59,9 @@ namespace EventPlanner.Tests
                 Description = "Updated meeting"
             };
 
-            // Act
             eventManager.EditEvent(0, updatedEvent);
 
-            // Assert
-            var events = eventManager.ViewEvents(); // Теперь это работает, так как метод возвращает список событий.
+            var events = eventManager.ViewEvents();
             Assert.AreEqual(1, events.Count);
             Assert.AreEqual("meeting", events[0].Type);
             Assert.AreEqual("Updated meeting", events[0].Description);
@@ -77,32 +70,27 @@ namespace EventPlanner.Tests
         [TestMethod]
         public void LoadEvents_ShouldLoadEventsFromFile()
         {
-            // Arrange
             var eventsToSave = new List<Event>
     {
         new Event { Type = "birthday", Date = DateTime.Now, Duration = 120, Description = "Birthday party" },
         new Event { Type = "call", Date = DateTime.Now.AddDays(1), Duration = 30, Description = "Follow-up call" }
     };
 
-            // Сохраняем события в файл для тестирования
             var json = JsonSerializer.Serialize(eventsToSave, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText("events.json", json); // Убедитесь, что файл создается в правильной директории
+            File.WriteAllText("events.json", json);
 
-            // Act
-            var eventManager = new EventManager(); // Создаем новый экземпляр EventManager, который вызовет LoadEvents
+            var eventManager = new EventManager(); 
 
-            // Assert
-            var eventsLoaded = eventManager.ViewEvents(); // Получаем загруженные события
-            Assert.AreEqual(2, eventsLoaded.Count); // Проверяем количество загруженных событий
-            Assert.AreEqual("birthday", eventsLoaded[0].Type); // Проверяем первое событие
-            Assert.AreEqual("call", eventsLoaded[1].Type); // Проверяем второе событие
+            var eventsLoaded = eventManager.ViewEvents(); 
+            Assert.AreEqual(2, eventsLoaded.Count);
+            Assert.AreEqual("birthday", eventsLoaded[0].Type);
+            Assert.AreEqual("call", eventsLoaded[1].Type);
         }
 
 
         [TestMethod]
         public void DeleteEvent_ShouldRemoveEventFromList()
         {
-            // Arrange
             var newEvent = new Event
             {
                 Type = "task",
@@ -112,10 +100,8 @@ namespace EventPlanner.Tests
             };
             eventManager.AddEvent(newEvent);
 
-            // Act
             eventManager.DeleteEvent(0);
 
-            // Assert
             var events = eventManager.ViewEvents();
             Assert.AreEqual(0, events.Count);
         }
@@ -124,7 +110,6 @@ namespace EventPlanner.Tests
         [TestCleanup]
         public void Cleanup()
         {
-            // Удаляем файл после выполнения тестов для чистоты окружения
             if (File.Exists(TestFilePath))
             {
                 File.Delete(TestFilePath);

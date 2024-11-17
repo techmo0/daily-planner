@@ -2,90 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Organizer;
+
 
 namespace EventPlanner
 {
-    public class Event
-    {
-        public string Type { get; set; }
-        public DateTime Date { get; set; }
-        public int Duration { get; set; } // Duration in minutes
-        public string Description { get; set; }
-
-        public override string ToString()
-        {
-            return $"{Type} on {Date.ToShortDateString()} at {Date.ToShortTimeString()} for {Duration} minutes: {Description}";
-        }
-    }
-
-    public class EventManager
-    {
-        private const string FilePath = "events.json";
-        private List<Event> events;
-
-        public EventManager()
-        {
-            events = LoadEvents();
-        }
-
-        public void AddEvent(Event newEvent)
-        {
-            events.Add(newEvent);
-            SaveEvents();
-        }
-
-        public void EditEvent(int index, Event updatedEvent)
-        {
-            if (index >= 0 && index < events.Count)
-            {
-                events[index] = updatedEvent;
-                SaveEvents();
-            }
-            else
-            {
-                Console.WriteLine("Invalid event index.");
-            }
-        }
-
-        public void DeleteEvent(int index)
-        {
-            if (index >= 0 && index < events.Count)
-            {
-                events.RemoveAt(index);
-                SaveEvents();
-            }
-            else
-            {
-                Console.WriteLine("Invalid event index.");
-            }
-        }
-
-        public List<Event> ViewEvents()
-        {
-            for (int i = 0; i < events.Count; i++)
-            {
-                Console.WriteLine($"{i}: {events[i]}");
-            }
-             return events;
-        }
-
-        public List<Event> LoadEvents()
-        {
-            if (File.Exists(FilePath))
-            {
-                var json = File.ReadAllText(FilePath);
-                return JsonSerializer.Deserialize<List<Event>>(json) ?? new List<Event>();
-            }
-            return new List<Event>();
-        }
-
-        private void SaveEvents()
-        {
-            var json = JsonSerializer.Serialize(events, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(FilePath, json);
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
